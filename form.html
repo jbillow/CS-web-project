@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href='stylesheets/style.css'>
+</head>
+<body>
+
+<div id="header">
+<h1>My PetMeds</h1>
+</div>
+
+<div id="nav">
+<ul>
+    <li><a href="/">Home</a></li><br>
+    <li><a href="/create">Calculate</a></li><br>
+    <li><a href="/info">Medicine Info</a></li><br>
+</ul>
+</div>
+
+<div id="section">
+<h2>My PetMeds Assistant</h2>
+<p>My PetMeds helps you calculate and keep track of your pets medicne dosage all in one place.</p>
+<p>You can create a profile for each of your pets and keep track of all their medicine dosages in one convenient place.</p>
+<h3>You can calculate your PetMeds here</h3>
+<p>Medicine types avalible are: doxycycline, amoxicillin, and baytril.
+<form action="/on_create" method="get">
+	<input type="text" name="pet" value="Pet name">
+	<input type="text" name="weight" value="Weight in lbs">
+	<input type="text" name="concentration" value="concentration in ml">
+	<!-- <input type="text" name="medicine" value="Medicine type"> -->
+	<input list="medicine" name="meds">
+		<datalist id="medicine">
+			<option value="doxycycline">
+			<option value="amoxicillin">
+			<option value="baytril">
+  		</datalist>
+	<input type="submit" value="Submit">
+	</form>
+</div>
+
+<div id="results">
+<h2> Results </h2>
+	<p>Click here after submitting to see the results:</p>
+	<form>
+	<input TYPE="button" onClick="history.go(0)" VALUE="Click to see results">
+	</form>
+	<table style="width:500px">
+		<tr>
+			<td>Name:</td>
+			<td>Dose in mL:</td>
+		</tr>
+		<tr>
+			<td>
+			<ul class="resultList">
+			{% for item in pets %}
+				<li>{{item.petName}} </li><br/>     
+			{% endfor %}
+			</ul>
+			</td>
+			<td>
+			<ul class="resultList">
+			{% for item in dose %}
+				<li>{{item.dose}} </li><br/>
+			{% endfor %}
+			</ul>
+			</td>		
+		</tr>
+	</table>
+	
+</div>
+
+
+<div id="side">
+</div>
+
+<div id="image">
+<img src="images/footer.jpg" alt="Paw prints 1" style="width:1052px;height:180px;">
+</div>
+
+<div id="footer">
+Copyright My PetMeds
+</div>
+
+</body>
+</html>
